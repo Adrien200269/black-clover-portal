@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { soundManager } from "@/lib/soundEffects";
 import { Volume2, VolumeX, Sparkles, Sword, Menu, X, Flame, Zap } from "lucide-react";
 
@@ -46,17 +47,16 @@ export default function Navbar({ onSlashTrigger, activeSection }: NavbarProps) {
           onClick={() => soundManager.playGrimoireOpen()}
           className="flex items-center gap-3.5 group cursor-pointer"
         >
-          {/* 5-Leaf Demonic Grimoire Seal */}
-          <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-[#1c060b] via-black to-[#250810] border-2 border-red-600/80 flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(239,68,68,0.6)] group-hover:border-red-400 group-hover:scale-105 transition-all duration-300">
-            <span className="text-white drop-shadow-[0_0_12px_rgba(239,68,68,1)]">
-              ☘️
-            </span>
-            {/* 5-leaf demonic marker */}
-            <div className="absolute -bottom-1.5 -right-1.5 w-4 h-4 bg-black border border-red-500 rounded-full flex items-center justify-center text-[10px] text-red-400 font-bold font-mono shadow-md">
-              5
-            </div>
-            {/* Red demon rune accent */}
-            <span className="absolute -top-1 -left-1 text-[8px] text-red-500 font-mono">✦</span>
+          {/* 5-Leaf Demonic Grimoire Seal - Black Clover Logo */}
+          <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.6)] group-hover:shadow-[0_0_35px_rgba(239,68,68,0.8)] group-hover:scale-105 transition-all duration-300">
+            <Image
+              src="/images/black-clover-logo.png"
+              alt="Black Clover 5-Leaf Grimoire"
+              width={48}
+              height={48}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
 
           <div className="flex flex-col">
