@@ -1,87 +1,231 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: #07070a;
-    --foreground: #f3f4f6;
-  }
+@theme {
+  --font-clover: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --font-royal: "Cinzel", Georgia, serif;
+  --font-gothic: "Grenze Gotisch", "MedievalSharp", "Old English Text MT", serif;
+  --font-shonen: "Bebas Neue", Impact, "Arial Black", sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-anti-black: #040407;
+  --color-anti-card: #090910;
+  --color-anti-crimson: #e11d48;
+  --color-mana-gold: #f59e0b;
+  --color-mana-cyan: #06b6d4;
+  --color-mana-violet: #8b5cf6;
+}
+
+:root {
+  --background: #040407;
+  --foreground: #f4f4f7;
 }
 
 body {
-  background-color: #050508;
-  color: #f3f4f6;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #040407;
+  color: #f4f4f7;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Grimoire & Anti-Magic glowing effects */
-.glow-anti-magic {
-  box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.4), 0 0 10px -2px rgba(239, 68, 68, 0.2);
+/* Typography Utility Classes */
+.font-clover {
+  font-family: "Cinzel Decorative", "Cinzel", Georgia, serif;
 }
 
-.glow-anti-magic-strong {
-  box-shadow: 0 0 35px 2px rgba(225, 29, 72, 0.5), 0 0 15px rgba(225, 29, 72, 0.3);
+.font-royal {
+  font-family: "Cinzel", Georgia, serif;
 }
 
-.glow-mana-gold {
-  box-shadow: 0 0 30px -5px rgba(234, 179, 8, 0.45);
+.font-gothic {
+  font-family: "Grenze Gotisch", "MedievalSharp", "Old English Text MT", serif;
 }
 
-.glow-mana-cyan {
-  box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.45);
-}
-
-.glow-mana-emerald {
-  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.45);
-}
-
-.glow-mana-violet {
-  box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.45);
+.font-shonen {
+  font-family: "Bebas Neue", Impact, "Arial Black", sans-serif;
+  letter-spacing: 0.05em;
 }
 
 /* Grimoire Texture / Dark Arcane Background Pattern */
-.bg-grimoire-texture {
-  background-color: #07070a;
-  background-image: radial-gradient(rgba(239, 68, 68, 0.08) 1px, transparent 1px),
-    radial-gradient(rgba(139, 92, 246, 0.05) 1px, #050508 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+.bg-grimoire-pattern {
+  background-color: #040407;
+  background-image: 
+    radial-gradient(rgba(225, 29, 72, 0.08) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(245, 158, 11, 0.04) 1px, #040407 1px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
 }
 
-/* Scrollbar Customization */
+/* Anime Manga Action Speedlines / Halftone */
+.bg-manga-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Grimoire Ornate Book Borders */
+.grimoire-card {
+  position: relative;
+  background: linear-gradient(145deg, #0d0d15, #08080f);
+  border: 1px solid rgba(225, 29, 72, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.grimoire-card:hover {
+  border-color: rgba(225, 29, 72, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(225, 29, 72, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.grimoire-gold-card {
+  position: relative;
+  background: linear-gradient(145deg, #0e0d13, #09080e);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8),
+              inset 0 1px 0 rgba(245, 158, 11, 0.1);
+}
+
+.grimoire-gold-card:hover {
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 15px 35px -5px rgba(245, 158, 11, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Anime Demonic Anti-Magic Glows */
+.glow-anti-magic {
+  box-shadow: 0 0 30px -5px rgba(225, 29, 72, 0.5), 0 0 12px rgba(225, 29, 72, 0.3);
+}
+
+.glow-anti-magic-lg {
+  box-shadow: 0 0 45px 2px rgba(225, 29, 72, 0.6), 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+.glow-clover-gold {
+  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.5), 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.glow-mana-cyan {
+  box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.5);
+}
+
+.glow-mana-violet {
+  box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.5);
+}
+
+/* Corner metal brackets for Grimoire covers */
+.corner-bracket-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid rgba(245, 158, 11, 0.6);
+  border-left: 2px solid rgba(245, 158, 11, 0.6);
+  pointer-events: none;
+}
+
+.corner-bracket-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.6);
+  border-right: 2px solid rgba(245, 158, 11, 0.6);
+  pointer-events: none;
+}
+
+.corner-bracket-crimson-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid rgba(225, 29, 72, 0.7);
+  border-left: 2px solid rgba(225, 29, 72, 0.7);
+  pointer-events: none;
+}
+
+.corner-bracket-crimson-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid rgba(225, 29, 72, 0.7);
+  border-right: 2px solid rgba(225, 29, 72, 0.7);
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090d;
+  background: #040407;
 }
 ::-webkit-scrollbar-thumb {
-  background: #272733;
+  background: #1f1f2e;
   border-radius: 4px;
-  border: 1px solid rgba(225, 29, 72, 0.3);
+  border: 1px solid rgba(225, 29, 72, 0.4);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #e11d48;
 }
 
-/* Text stroke for manga typography */
-.text-stroke-sm {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+/* Rotating Magic Circle */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 50s linear infinite;
 }
 
 /* Pulsing Mana Animation */
-@keyframes pulse-subtle {
+@keyframes pulse-mana {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.35;
     transform: scale(1);
   }
   50% {
-    opacity: 0.6;
-    transform: scale(1.05);
+    opacity: 0.75;
+    transform: scale(1.06);
   }
 }
 
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s ease-in-out infinite;
+.animate-pulse-mana {
+  animation: pulse-mana 5s ease-in-out infinite;
+}
+
+/* Demonic Miasma float */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 3.5s ease-in-out infinite;
 }

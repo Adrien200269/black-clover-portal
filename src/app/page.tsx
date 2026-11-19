@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SquadCharacterExplorer from "@/components/SquadCharacterExplorer";
@@ -26,9 +26,35 @@ export default function Home() {
     }
   };
 
+  // Scroll spy to highlight active section in Navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["squads", "kingdoms", "spells", "episodes", "quiz"];
+      const scrollPosition = window.scrollY + 250;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(sectionId);
+            return;
+          }
+        }
+      }
+      if (window.scrollY < 300) {
+        setActiveSection("hero");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-[#050508] text-zinc-100 relative selection:bg-rose-600 selection:text-white">
-      {/* Interactive Anti-Magic Slash Effect */}
+    <main className="min-h-screen bg-[#040407] text-zinc-100 relative selection:bg-rose-600 selection:text-white font-sans overflow-x-hidden">
+      {/* Interactive Anti-Magic Demon-Slayer Slash Effect */}
       <AntiMagicSlashOverlay
         active={slashActive}
         onFinish={() => setSlashActive(false)}
@@ -55,7 +81,7 @@ export default function Home() {
       {/* Anime Arcs & Episode Watch Tracker */}
       <EpisodeArcGuide />
 
-      {/* "Which Grimoire & Squad Choose You?" Interactive Quiz */}
+      {/* "Which Grimoire & Squad Choose You?" Interactive Ceremony Quiz */}
       <SquadQuiz />
 
       {/* Footer */}
