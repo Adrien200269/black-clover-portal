@@ -7,7 +7,7 @@ import { characters } from "@/data/characters";
 import { Squad, SquadId } from "@/types";
 import { soundManager } from "@/lib/soundEffects";
 import confetti from "canvas-confetti";
-import { Sparkles, RefreshCw, Award, Shield, Check, Flame, Share2, BookOpen, Star } from "lucide-react";
+import { Sparkles, RefreshCw, Award, Shield, Check, Flame, Share2, BookOpen, Star, Zap } from "lucide-react";
 
 export default function SquadQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -84,13 +84,13 @@ export default function SquadQuiz() {
     let characterMatch = "Asta";
     let magicType = "Anti-Magic / Demonic Void";
     let title = "The Unyielding Limit Breaker (反魔法の戦士)";
-    let evaluation = "You spit in the face of destiny and forge your own legacy through relentless grit, iron will, and unbreakable bonds.";
+    let evaluation = "You reject destiny and forge your own legacy through relentless grit, iron will, and unbreakable bonds.";
 
     if (topSquadId === "golden-dawn") {
       characterMatch = "Yuno Grinberryall";
       magicType = "Wind & Celestial Star Magic (風魔法・星魔法)";
       title = "The Chosen Sovereign Prodigy (選ばれし天才)";
-      evaluation = "Blessed with celestial mana control and majestic pride, you effortlessly surpass the expectations of royals and gods.";
+      evaluation = "Blessed with celestial mana control and majestic pride, you effortlessly surpass all expectations.";
     } else if (topSquadId === "silver-eagles") {
       characterMatch = "Nozel Silva";
       magicType = "Liquid Mercury Manipulation (水銀魔法)";
@@ -125,7 +125,7 @@ export default function SquadQuiz() {
         particleCount: 120,
         spread: 90,
         origin: { y: 0.6 },
-        colors: ["#e11d48", "#f59e0b", "#10b981", "#06b6d4", "#8b5cf6"],
+        colors: ["#ef4444", "#dc2626", "#b91c1c", "#f87171", "#ffffff"],
       });
     } catch {
       // ignore
@@ -143,20 +143,20 @@ export default function SquadQuiz() {
   const currentQ = quizQuestions[currentStep];
 
   return (
-    <section id="quiz" className="py-24 relative bg-gradient-to-b from-[#040408] via-[#090712] to-black bg-grimoire-pattern">
+    <section id="quiz" className="py-24 relative bg-gradient-to-b from-[#030306] via-[#09050c] to-black bg-grimoire-pattern">
       {/* Decorative Kanji Watermark */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none select-none text-[80px] sm:text-[140px] font-black text-white/[0.025] tracking-widest font-gothic whitespace-nowrap">
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none select-none text-[80px] sm:text-[140px] font-black text-red-600/[0.03] tracking-widest font-gothic whitespace-nowrap">
         魔導書授与式
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Section Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-950/60 border border-rose-600/50 text-xs font-royal text-rose-300 shadow-lg shadow-rose-950/50">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin-slow" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/70 border border-red-700/60 text-xs font-royal text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+            <Zap className="w-3.5 h-3.5 text-red-400 animate-pulse" />
             <span>THE GRIMOIRE ACCEPTANCE CEREMONY // 魔導書授与の儀</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-clover uppercase drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)]">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-clover uppercase drop-shadow-[0_2px_15px_rgba(239,68,68,0.4)]">
             Which Grimoire & Squad Choose You?
           </h2>
           <p className="text-zinc-400 max-w-xl mx-auto text-sm sm:text-base font-sans">
@@ -167,22 +167,22 @@ export default function SquadQuiz() {
 
         {/* Quiz Body */}
         {!isFinished ? (
-          <div className="p-6 sm:p-10 rounded-3xl bg-[#080812] border border-rose-950/70 shadow-[0_20px_50px_rgba(0,0,0,0.9)] space-y-7 relative overflow-hidden">
-            {/* Grimoire Corner Brackets */}
-            <div className="corner-bracket-tl" />
-            <div className="corner-bracket-br" />
+          <div className="p-6 sm:p-10 rounded-3xl bg-[#07050a] border-2 border-red-950/80 shadow-[0_20px_50px_rgba(0,0,0,0.9)] space-y-7 relative overflow-hidden">
+            {/* Red Demon Corner Brackets */}
+            <div className="corner-bracket-crimson-tl" />
+            <div className="corner-bracket-crimson-br" />
 
             {/* Step Progress Bar */}
             <div className="space-y-2 relative z-10">
               <div className="flex justify-between text-xs font-royal text-zinc-400">
                 <span className="font-bold">Trial 0{currentStep + 1} of 0{quizQuestions.length}</span>
-                <span className="text-amber-400 font-mono font-bold">
+                <span className="text-red-400 font-mono font-bold">
                   {Math.round(((currentStep + 1) / quizQuestions.length) * 100)}% Resonating
                 </span>
               </div>
-              <div className="w-full h-2.5 bg-black/80 border border-zinc-800 rounded-full overflow-hidden p-0.5">
+              <div className="w-full h-2.5 bg-black border border-red-950 rounded-full overflow-hidden p-0.5">
                 <div
-                  className="h-full bg-gradient-to-r from-rose-600 via-amber-500 to-rose-500 rounded-full transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-red-700 via-rose-500 to-red-500 rounded-full transition-all duration-300"
                   style={{ width: `${((currentStep + 1) / quizQuestions.length) * 100}%` }}
                 />
               </div>
@@ -190,7 +190,7 @@ export default function SquadQuiz() {
 
             {/* Question Prompt */}
             <div className="space-y-2 pt-2 relative z-10">
-              <span className="text-xs text-amber-400 font-royal font-bold block uppercase tracking-wider">
+              <span className="text-xs text-red-400 font-royal font-bold block uppercase tracking-wider">
                 Combat Scenario: "{currentQ.scenario}"
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white font-clover leading-snug">
@@ -204,16 +204,16 @@ export default function SquadQuiz() {
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className="w-full p-4 sm:p-5 rounded-2xl bg-black/50 hover:bg-[#120a16] border border-zinc-800/90 hover:border-amber-500/60 text-left transition-all duration-200 group flex items-start gap-4 cursor-pointer"
+                  className="w-full p-4 sm:p-5 rounded-2xl bg-black/60 hover:bg-red-950/30 border border-red-950/80 hover:border-red-500/80 text-left transition-all duration-200 group flex items-start gap-4 cursor-pointer"
                 >
-                  <span className="w-7 h-7 rounded-xl bg-zinc-900 border border-zinc-700 group-hover:bg-gradient-to-r group-hover:from-rose-600 group-hover:to-amber-500 text-xs font-mono font-bold text-zinc-300 group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-all shadow-sm">
+                  <span className="w-7 h-7 rounded-xl bg-black border border-red-900 group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-rose-600 text-xs font-mono font-bold text-zinc-300 group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-all shadow-sm">
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <div className="space-y-1">
                     <p className="text-sm sm:text-base text-zinc-200 group-hover:text-white font-medium leading-relaxed font-sans">
                       {option.text}
                     </p>
-                    <span className="text-xs text-zinc-400 italic font-gothic block group-hover:text-amber-300/90 transition-colors">
+                    <span className="text-xs text-zinc-400 italic font-gothic block group-hover:text-red-300 transition-colors">
                       "{option.flavorQuote}"
                     </span>
                   </div>
@@ -224,33 +224,33 @@ export default function SquadQuiz() {
         ) : (
           /* Result Card Ceremony */
           result && (
-            <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-[#140a16] via-[#090812] to-black border-2 border-rose-500/70 shadow-[0_0_60px_rgba(225,29,72,0.4)] space-y-8 animate-fadeIn text-center relative overflow-hidden">
-              {/* Grimoire Corner Brackets */}
+            <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-[#14060c] via-[#08050c] to-black border-2 border-red-600/80 shadow-[0_0_60px_rgba(239,68,68,0.5)] space-y-8 animate-fadeIn text-center relative overflow-hidden">
+              {/* Red Demon Corner Brackets */}
               <div className="corner-bracket-crimson-tl" />
               <div className="corner-bracket-crimson-br" />
 
               <div className="space-y-3 relative z-10">
-                <span className="text-xs font-royal uppercase tracking-[0.25em] text-amber-400 font-bold block">
+                <span className="text-xs font-royal uppercase tracking-[0.25em] text-red-400 font-bold block">
                   ★ THE TOWER MASTER HAS BESTOWED YOUR GRIMOIRE ★
                 </span>
-                <h3 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-clover uppercase tracking-tight drop-shadow-[0_2px_20px_rgba(225,29,72,0.6)]">
+                <h3 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-clover uppercase tracking-tight drop-shadow-[0_2px_20px_rgba(239,68,68,0.7)]">
                   Welcome to the {result.squad.name}!
                 </h3>
-                <p className="text-base font-gothic text-amber-300 italic">
+                <p className="text-base font-gothic text-red-300 italic">
                   "{result.squad.motto}"
                 </p>
               </div>
 
               {/* Ceremony Badge Display */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-2 relative z-10">
-                <div className="p-5 rounded-2xl bg-black/60 border border-rose-900/60 space-y-1.5 shadow-xl">
+                <div className="p-5 rounded-2xl bg-black/70 border border-red-900/70 space-y-1.5 shadow-xl">
                   <span className="text-[10px] uppercase font-royal text-zinc-400 font-bold block">
                     Awakened Grimoire
                   </span>
                   <span className="text-2xl font-black text-white font-clover flex items-center justify-center gap-1.5">
                     {result.grimoireLeaf}-Leaf {result.grimoireLeaf === 5 ? "☘️" : result.grimoireLeaf === 4 ? "🍀" : "☘"}
                   </span>
-                  <span className="text-xs text-rose-400 font-mono font-bold block">
+                  <span className="text-xs text-red-400 font-mono font-bold block">
                     {result.grimoireLeaf === 5
                       ? "悪魔 // Demon Resides"
                       : result.grimoireLeaf === 4
@@ -259,33 +259,33 @@ export default function SquadQuiz() {
                   </span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-black/60 border border-amber-900/60 space-y-1.5 shadow-xl">
+                <div className="p-5 rounded-2xl bg-black/70 border border-red-900/70 space-y-1.5 shadow-xl">
                   <span className="text-[10px] uppercase font-royal text-zinc-400 font-bold block">
                     Kindred Knight Soul
                   </span>
                   <span className="text-xl font-black text-white font-clover">
                     {result.characterMatch}
                   </span>
-                  <span className="text-xs text-amber-300 font-royal font-bold block">
+                  <span className="text-xs text-red-300 font-royal font-bold block">
                     {result.title}
                   </span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-black/60 border border-cyan-900/60 space-y-1.5 shadow-xl">
+                <div className="p-5 rounded-2xl bg-black/70 border border-red-900/70 space-y-1.5 shadow-xl">
                   <span className="text-[10px] uppercase font-royal text-zinc-400 font-bold block">
                     Magic Affinity
                   </span>
                   <span className="text-base font-bold text-white font-clover">
                     {result.magicType}
                   </span>
-                  <span className="text-xs text-cyan-400 font-mono font-bold block">
+                  <span className="text-xs text-red-400 font-mono font-bold block">
                     Stage 0 / Arcane Affinity
                   </span>
                 </div>
               </div>
 
               {/* Description evaluation */}
-              <div className="max-w-2xl mx-auto p-5 rounded-2xl bg-black/50 border border-zinc-800 text-sm sm:text-base text-zinc-300 leading-relaxed font-sans relative z-10">
+              <div className="max-w-2xl mx-auto p-5 rounded-2xl bg-black/60 border border-red-950 text-sm sm:text-base text-zinc-300 leading-relaxed font-sans relative z-10">
                 {result.evaluation}
               </div>
 
@@ -293,7 +293,7 @@ export default function SquadQuiz() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-3 relative z-10">
                 <button
                   onClick={resetQuiz}
-                  className="px-6 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-zinc-500 text-white font-royal font-bold text-sm flex items-center gap-2 cursor-pointer transition-all"
+                  className="px-6 py-3.5 rounded-xl bg-black hover:bg-red-950/40 border border-red-900/80 text-white font-royal font-bold text-sm flex items-center gap-2 cursor-pointer transition-all"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span>Retake the Trial // 再挑戦</span>
@@ -302,7 +302,7 @@ export default function SquadQuiz() {
                 <a
                   href="#squads"
                   onClick={() => soundManager.playHover()}
-                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-rose-700 to-red-600 hover:from-rose-600 hover:to-red-500 text-white font-royal font-bold text-sm flex items-center gap-2 shadow-lg shadow-rose-950/80 border border-rose-400/40 cursor-pointer transition-all"
+                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-rose-600 to-red-800 hover:from-red-600 hover:to-rose-500 text-white font-royal font-bold text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(239,68,68,0.6)] border border-red-400/50 cursor-pointer transition-all"
                 >
                   <Shield className="w-4 h-4" />
                   <span>Inspect {result.squad.name} Roster</span>
