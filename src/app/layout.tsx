@@ -4,6 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BLACK CLOVER // Magic Knight Grimoire & Four Kingdoms Compendium",
   description: "Surpass your limits! Enter the Black Clover universe: 9 Magic Knight squads, Four Kingdoms lore, grimoire spell compendium, and Grimoire Acceptance Ceremony quiz.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

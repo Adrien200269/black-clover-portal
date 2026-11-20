@@ -41,36 +41,22 @@ export default function Navbar({ onSlashTrigger, activeSection }: NavbarProps) {
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-red-600 to-transparent shadow-[0_0_12px_rgba(239,68,68,0.9)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo - Black Clover Asta Theme */}
+        {/* Brand Logo - Official Black Clover Anime Title Logo */}
         <a
           href="#"
           onClick={() => soundManager.playGrimoireOpen()}
-          className="flex items-center gap-3.5 group cursor-pointer"
+          className="flex items-center group cursor-pointer py-1"
+          title="Black Clover (ブラッククローバー)"
         >
-          {/* 5-Leaf Demonic Grimoire Seal - Black Clover Logo */}
-          <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.6)] group-hover:shadow-[0_0_35px_rgba(239,68,68,0.8)] group-hover:scale-105 transition-all duration-300">
+          <div className="relative h-12 sm:h-14 w-auto flex items-center">
             <Image
               src="/images/black-clover-logo.png"
-              alt="Black Clover 5-Leaf Grimoire"
-              width={48}
-              height={48}
-              className="w-full h-full object-cover"
+              alt="Black Clover (ブラッククローバー)"
+              width={210}
+              height={60}
+              className="h-10 sm:h-12 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(239,68,68,0.45)] group-hover:drop-shadow-[0_0_24px_rgba(239,68,68,0.9)] group-hover:scale-105 transition-all duration-300"
               priority
             />
-          </div>
-
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-clover text-xl sm:text-2xl font-black tracking-wider text-white uppercase drop-shadow-[0_2px_12px_rgba(239,68,68,0.4)]">
-                Black Clover
-              </span>
-              <span className="hidden sm:inline-block font-shonen text-xs px-2 py-0.5 rounded bg-red-950/90 text-red-400 border border-red-600/60 tracking-wider">
-                反魔法 // DEMON
-              </span>
-            </div>
-            <span className="text-[10px] sm:text-xs text-red-400 font-royal tracking-[0.25em] uppercase">
-              Anti-Magic Compendium
-            </span>
           </div>
         </a>
 
